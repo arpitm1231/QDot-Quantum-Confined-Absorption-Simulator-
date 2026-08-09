@@ -5,10 +5,12 @@ solver in qdot_physics.py. Same weights file used by the browser (JS) version â€
 both give identical predictions.
 """
 import json
+import os
 import numpy as np
 from qdot_physics import MATERIALS, SHAPES, HC
 
-with open("surrogate_weights.json") as f:
+_WEIGHTS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "surrogate_weights.json")
+with open(_WEIGHTS_PATH) as f:
     W = json.load(f)
 
 _x_mean = np.array(W["x_mean"])
